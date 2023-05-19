@@ -61,27 +61,35 @@
                                         </Storyboard>
                                     </VisualState>
                                 </VisualStateGroup>
-                                <VisualStateGroup x:Name="SelectionStates">
-                                    <VisualState x:Name="Unselected"/>
-                                    <VisualState x:Name="Selected"/>
-                                </VisualStateGroup>
-                                <VisualStateGroup x:Name="FocusStates">
-                                    <VisualState x:Name="Focused">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FocusVisualTop" Storyboard.TargetProperty="Visibility" Duration="0">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                    <VisualState x:Name="Unfocused">
-                                        <Storyboard>
-                                            <ObjectAnimationUsingKeyFrames Storyboard.TargetName="FocusVisualTop" Storyboard.TargetProperty="Visibility" Duration="0">
-                                                <DiscreteObjectKeyFrame KeyTime="0" Value="Collapsed" />
-                                            </ObjectAnimationUsingKeyFrames>
-                                        </Storyboard>
-                                    </VisualState>
-                                </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
+                            <Border x:Name="BorderTop" BorderThickness="0" CornerRadius="3,3,0,0">
+                                <!--<Border x:Name="GradientTop" BorderThickness="0" CornerRadius="1,1,0,0">-->
+                                <Grid x:Name="grid">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="30"/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <!-- första delen i processpilen -->
+                                    <Canvas x:Name="Layer_3" Width="17" Height="30" Grid.Column="0" Grid.Row="0" Margin="0,0,-1,0">
+                                        <Path x:Name="Path3" Width="15" Height="30" Canvas.Left="0" Stretch="Fill" StrokeThickness="0" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF6F8DAD" Data="F1 M 0,262C 68.5251,257.538 122.724,200.544 122.724,130.891C 122.724,62.2145 70.035,5.84472 2.87519,-7.62939e-006L 129.724,-7.62939e-006L 129.724,262L 0,262 Z " UseLayoutRounding="False"/>
+                                    </Canvas>
+
+                                    <Rectangle x:Name="rectangle" Fill="#FF6F8DAD" Grid.Column="1" StrokeThickness="0" Height="29" Margin="-2,-1,-2,-1"/>
+                                    <ContentControl x:Name="HeaderTopUnselected" Cursor="{TemplateBinding Cursor}" IsTabStop="False" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" FontFamily="Tahoma" Foreground="White" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
+                                    <!--<ContentControl x:Name="HeaderTopSelected" Cursor="{TemplateBinding Cursor}" IsTabStop="False" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" FontFamily="Tahoma" Foreground="#FF354D66" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>-->
+
+                                    <!-- sista delen i processpilen -->
+                                    <Canvas x:Name="Layer_4" Width="8" Height="30" Grid.Column="2">
+                                        <Path x:Name="Path4" Width="15" Height="30" Canvas.Left="0" Stretch="Fill" StrokeThickness="0" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF6F8DAD" Data="F1 M 130.834,130.917C 130.834,203.192 72.2653,261.789 0,261.833L 0,7.62939e-006C 72.2654,0.0445938 130.834,58.6409 130.834,130.917 Z " UseLayoutRounding="False"/>
+                                    </Canvas>
+                                </Grid>
+                                <!--</Border>-->
+                            </Border>
+                            <Border x:Name="FocusVisualElement" Margin="-1" IsHitTestVisible="false" Visibility="Collapsed" BorderThickness="0" CornerRadius="3,3,0,0"/>
                             <Grid x:Name="TemplateTopSelected" Visibility="Collapsed" >
                                 <Border Margin="0" BorderThickness="0" BorderBrush="#FFFFFFFF" CornerRadius="3,3,0,0">
                                     <!--<Border  BorderThickness="0" CornerRadius="1,1,0,0">-->
@@ -109,35 +117,6 @@
                                 </Border>
                                 <Border x:Name="FocusVisualTop" IsHitTestVisible="false" Visibility="Collapsed" BorderBrush="#FF59BFD9" BorderThickness="1" CornerRadius="3,3,0,0"/>
                             </Grid>
-                            <Grid x:Name="TemplateTopUnselected" Visibility="Collapsed">
-                                <Border x:Name="BorderTop" BorderThickness="0" CornerRadius="3,3,0,0">
-                                    <!--<Border x:Name="GradientTop" BorderThickness="0" CornerRadius="1,1,0,0">-->
-                                    <Grid x:Name="grid">
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="30"/>
-                                        </Grid.RowDefinitions>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <!-- första delen i processpilen -->
-                                        <Canvas x:Name="Layer_3" Width="17" Height="30" Grid.Column="0" Grid.Row="0" Margin="0,0,-1,0">
-                                            <Path x:Name="Path3" Width="15" Height="30" Canvas.Left="0" Stretch="Fill" StrokeThickness="0" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF6F8DAD" Data="F1 M 0,262C 68.5251,257.538 122.724,200.544 122.724,130.891C 122.724,62.2145 70.035,5.84472 2.87519,-7.62939e-006L 129.724,-7.62939e-006L 129.724,262L 0,262 Z " UseLayoutRounding="False"/>
-                                        </Canvas>
-
-                                        <Rectangle x:Name="rectangle" Fill="#FF6F8DAD" Grid.Column="1" StrokeThickness="0" Height="29" Margin="-2,-1,-2,-1"/>
-                                        <ContentControl x:Name="HeaderTopUnselected" Cursor="{TemplateBinding Cursor}" IsTabStop="False" Grid.Column="1" HorizontalAlignment="Center" Margin="3" VerticalAlignment="Center" FontFamily="Tahoma" Foreground="White" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"/>
-
-                                        <!-- sista delen i processpilen -->
-                                        <Canvas x:Name="Layer_4" Width="8" Height="30" Grid.Column="2">
-                                            <Path x:Name="Path4" Width="15" Height="30" Canvas.Left="0" Stretch="Fill" StrokeThickness="0" StrokeLineJoin="Round" Stroke="#FF000000" Fill="#FF6F8DAD" Data="F1 M 130.834,130.917C 130.834,203.192 72.2653,261.789 0,261.833L 0,7.62939e-006C 72.2654,0.0445938 130.834,58.6409 130.834,130.917 Z " UseLayoutRounding="False"/>
-                                        </Canvas>
-                                    </Grid>
-                                    <!--</Border>-->
-                                </Border>
-                            </Grid>
-                            <Border x:Name="FocusVisualElement" Margin="-1" IsHitTestVisible="false" Visibility="Collapsed" BorderThickness="0" CornerRadius="3,3,0,0"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
