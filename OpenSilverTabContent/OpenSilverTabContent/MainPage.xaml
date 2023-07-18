@@ -127,7 +127,11 @@
     <Grid x:Name="rootContainer" >
         <sdk:TabControl>
             <sdk:TabItem Header="First Tab" Content="This is first tab content" Style="{StaticResource MainProcessStepStyle}" />
-            <sdk:TabItem Header="2nd Tab" Content="This is 2nd tab content" Style="{StaticResource MainProcessStepStyle}"  />
+            <sdk:TabItem Header="2nd Tab" Style="{StaticResource MainProcessStepStyle}">
+                <StackPanel>
+                    <TextBox AcceptsReturn="True" KeyDown="TextBox_KeyDown"></TextBox>
+                </StackPanel>
+            </sdk:TabItem>
         </sdk:TabControl>
     </Grid>
 

@@ -37,5 +37,10 @@ namespace OpenSilverTabContent
 
             //rootContainer.Children.Add(_tabControl);
         }
+
+        private void TextBox_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+
+        }
     }
 }
